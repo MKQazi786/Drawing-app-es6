@@ -31,15 +31,50 @@ document.getElementById("ageInputId").oninput = () => {
     ctx.lineWidth = lineW;
 };
 
-let clrs = document.querySelectorAll(".clr")
-clrs.map((clr)=>{
+let clrs = document.querySelector(".clr")
+clrs = Array.from(clrs.children);
+clrs.map((clr) => {
     clr.addEventListener("click",()=>{
         ctx.strokeStyle = clr.dataset.clr;
     })
 })
 
-let clearBtn = document.querySelectorAll(".clear");
+let clearBtn = document.querySelector(".clear");
 
 clearBtn.addEventListener("click",()=>{
-    location.reload();
+    // location.reload();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+})
+
+let saveBtn = document.querySelector(".save");
+
+saveBtn.addEventListener("click",()=>{
+    let data = canvas.toDataURL("imag/png");
+    let a = document.createElement("a");
+    a.href = data;
+    a.download = "sketch.png";
+    a.click();
+    
+})
+
+window.addEventListener("mousedown",(e)=> draw = true);
+window.addEventListener("mouseup",(e)=> draw = false);
+
+window.addEventListener("mousemove", (e)=>{
+    if(prevX == null || prevY == null || !draw){
+        prevX = e.clientX;
+        prevY = e.clientY;
+        return;
+    }
+
+    let currentX = e.clientX;
+    let currentY = e.clientY;
+
+    ctx.beginPath();
+    ctx.moveTo(prevX, prevY);
+    ctx.lineTo(currentX, currentY);
+    ctx.stroke();
+
+    prevX = currentX;
+    prevY = currentY;
 })
