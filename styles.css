@@ -16,8 +16,7 @@
     align-items: center;
     justify-content: space-around;
     transition: opacity 1s;
-    background: linear-gradient(to right, #4568DC, #B06AB3);
-    
+    background: linear-gradient(to right, #4568DC, #B06AB3); 
     padding: 0.6rem;
     border-radius: 0.6rem;
     border: 3px solid white;
@@ -43,8 +42,7 @@ button:hover {
 }
 
 .clr:hover {
-    transform: scale(1.2);
-    
+    transform: scale(1.2); 
 }
 
 .clr:nth-child(1) {

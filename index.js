@@ -4,10 +4,10 @@ let body = document.querySelector("body");
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 
-let color = " ";
+let color = "";
 let lineW = 5;
 
-let prevX = null;
+let prevX = null;   
 let prevY = null;
 
 let draw = false;
@@ -31,8 +31,9 @@ document.getElementById("ageInputId").oninput = () => {
     ctx.lineWidth = lineW;
 };
 
-let clrs = document.querySelector(".clr")
-clrs = Array.from(clrs.children);
+let clrs = document.querySelectorAll(".clr")
+
+clrs = [...clrs];
 clrs.map((clr) => {
     clr.addEventListener("click",()=>{
         ctx.strokeStyle = clr.dataset.clr;
@@ -52,13 +53,13 @@ saveBtn.addEventListener("click",()=>{
     let data = canvas.toDataURL("imag/png");
     let a = document.createElement("a");
     a.href = data;
-    a.download = "sketch.png";
+    a.download = "Muhammad-Khubaib(MKQazi786).png";
     a.click();
     
 })
 
-window.addEventListener("mousedown",(e)=> draw = true);
-window.addEventListener("mouseup",(e)=> draw = false);
+window.addEventListener("mousedown",()=> draw = true);
+window.addEventListener("mouseup",()=> draw = false);
 
 window.addEventListener("mousemove", (e)=>{
     if(prevX == null || prevY == null || !draw){
