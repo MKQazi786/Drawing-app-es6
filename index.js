@@ -79,3 +79,26 @@ window.addEventListener("mousemove", (e)=>{
     prevX = currentX;
     prevY = currentY;
 })
+
+canvas.addEventListener("touchstart",()=> draw = true)
+canvas.addEventListener("touchend",()=> draw = false);
+
+canvas.addEventListener("touchmove", (e)=>{
+    e.preventDefault();
+    if(prevX == null || prevY == null || !draw){
+        prevX = e.touches[0].clientX;
+        prevY = e.touches[0].clientY;
+        return;
+    }
+
+    let currentX = e.touches[0].clientX;
+    let currentY = e.touches[0].clientY;
+
+    ctx.beginPath();
+    ctx.moveTo(prevX, prevY);
+    ctx.lineTo(currentX, currentY);
+    ctx.stroke();
+
+    prevX = currentX;
+    prevY = currentY;
+},{ passive: false });
