@@ -50,7 +50,7 @@ clearBtn.addEventListener("click",()=>{
 let saveBtn = document.querySelector(".save");
 
 saveBtn.addEventListener("click",()=>{
-    let data = canvas.toDataURL("imag/png");
+    let data = canvas.toDataURL("image/png");
     let a = document.createElement("a");
     a.href = data;
     a.download = "Muhammad-Khubaib(MKQazi786).png";

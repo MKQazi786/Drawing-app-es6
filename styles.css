@@ -115,9 +115,20 @@ input[type="color"]{
     accent-color: white;
 }
 
-.emoji{
+.emoji {
     font-size: 2.1rem;
     padding-bottom: 0.6rem;
     cursor:not-allowed;
 }
 
+@media (max-width: 844px){
+    .nav {
+        display: flex;
+        flex-direction: column-reverse;
+        height: 36.5rem;
+        width: 8rem;
+        left: 5rem;
+        align-items: normal;
+    }
+    
+}
