@@ -80,12 +80,17 @@ window.addEventListener("mousemove", (e)=>{
     prevY = currentY;
 })
 
-canvas.addEventListener("touchstart",()=> draw = true)
+canvas.addEventListener("touchstart", (e) => {
+    draw = true;
+    prevX = e.touches[0].clientX;
+    prevY = e.touches[0].clientY;
+});
+
 canvas.addEventListener("touchend",()=> draw = false);
 
 canvas.addEventListener("touchmove", (e)=>{
     e.preventDefault();
-    if(prevX == null || prevY == null || !draw){
+    if(prevX == null || prevY == !draw){
         prevX = e.touches[0].clientX;
         prevY = e.touches[0].clientY;
         return;
